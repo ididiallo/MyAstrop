@@ -1,0 +1,53 @@
+---
+const shimmer =
+  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
+import { fetchFilteredInvoices } from "../lib/data";
+import { formatDateToLocal, formatCurrency } from "../lib/utils";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class={`${shimmer} relative overflow-hidden rounded-xl bg-gray-100 p-2 shadow-sm`}
+    >
+      <div class="flex p-4 ">
+        <table class="hidden min-w-full text-gray-900 md:table ">
+          <thead class="rounded-lg text-left text-sm font-normal">
+            <tr>
+              <th scope="col" class="px-4 py-5 font-medium sm:pl-6">
+                Customer</th
+              >
+              <th scope="col" class="px-3 py-5 font-medium"> Email</th>
+              <th scope="col" class="px-3 py-5 font-medium"> Amount</th>
+              <th scope="col" class="px-3 py-5 font-medium"> Date</th>
+              <th scope="col" class="px-3 py-5 font-medium"> Status</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white"> </tbody>
+        </table>
+        <div class="h-5 w-5 rounded-md bg-gray-200"></div>
+        <div class="ml-2 h-6 w-16 rounded-md bg-gray-200 text-sm font-medium">
+        </div>
+      </div>
+    </div>
+    <div>
+      <table>
+        <tbody class="bg-white">
+          <div
+            class="flex items-center justify-center truncate rounded-xl bg-white px-4 py-8"
+          >
+            <th scope="col" class="pb-4 pl-3 pr-6 pt-2 sm:pr-6">
+              <span class="font-medium">Edit</span>
+            </th>
+          </div>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

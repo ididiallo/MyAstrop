@@ -1,0 +1,33 @@
+---
+import SideNave from '../components/sideNave.astro';
+
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+
+		<div class="flex h-screen flex-col md:flex-row md:overflow-hidden">
+		  <div class="w-full flex-none md:w-64">
+			<SideNave />
+		  </div>
+		  <div class="flex-grow p-6 md:overflow-y-auto md:p-12">
+			<slot />
+		</div>
+		</div>
+	  
+	</body>
+</html>
+
+
+

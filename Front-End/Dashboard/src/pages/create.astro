@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+const title = "create";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex">
+    <!-- Include the sidebar -->
+    <Layout {title} />
+    <!-- Main content -->
+
+    <div class="flex-grow p-8 md:overflow-y-auto md:p-12 "  >
+      <main>
+        <nav aria-label="Breadcrumb" class="mb-6 block">
+          <ol class="__className_712214 flex text-xl md:text-2xl">
+            <li class="text-gray-500">
+              <a href="/dashboard/invoices">Invoices</a><span
+                class="mx-3 inline-block">/</span
+              >
+            </li><li aria-current="true" class="text-gray-900">
+              <a href="/create">create Invoice</a>
+            </li>
+          </ol>
+        </nav><form
+          action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+        >
+          <div class="rounded-md bg-gray-50 p-4 md:p-6">
+            <div class="mb-4">
+              <label for="customer" class="mb-2 block text-sm font-medium"
+                >Choose customer</label
+              ><div class="relative">
+                <select
+                  id="customer"
+                  name="customerId"
+                  class="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  ><option value="" disabled="" selected=""
+                    >Select a customer</option
+                  ><option value="cc27c14a-0acf-4f4a-a6c9-d45682c144b9"
+                    >Amy Burns</option
+                  ><option value="13d07535-c59e-4157-a011-f8d2ef4e0cbb"
+                    >Balazs Orban</option
+                  ><option value="3958dc9e-712f-4377-85e9-fec4b6a6442a"
+                    >Delba de Oliveira</option
+                  ><option value="126eed9c-c90c-4ef6-a4a8-fcf7408d3c66"
+                    >Emil Kowalski</option
+                  ><option value="d6e15727-9fe1-4961-8c5b-ea44a9bd81aa"
+                    >Evil Rabbit</option
+                  ><option value="3958dc9e-737f-4377-85e9-fec4b6a6442a"
+                    >Hector Simpson</option
+                  ><option value="3958dc9e-742f-4377-85e9-fec4b6a6442a"
+                    >Lee Robinson</option
+                  ><option value="76d65c26-f784-44a2-ac19-586678f7c2f2"
+                    >Michael Novotny</option
+                  ><option value="3958dc9e-787f-4377-85e9-fec4b6a6442a"
+                    >Steph Dietz</option
+                  ><option value="50ca3e18-62cd-11ee-8c99-0242ac120002"
+                    >Steven Tey</option
+                  ></select
+                >
+
+                 
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="amount" class="mb-2 block text-sm font-medium"
+                >Choose an amount</label
+              ><div class="relative mt-2 rounded-md">
+                <div class="relative">
+                  <input
+                    id="amount"
+                    step="0.01"
+                    placeholder="Enter USD amount"
+                    class="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    type="number"
+                    name="amount"
+                  />
+                </div>
+              </div>
+            </div><fieldset>
+              <legend class="mb-2 block text-sm font-medium"
+                >Set the invoice status</legend
+              ><div
+                class="rounded-md border border-gray-200 bg-white px-[14px] py-3"
+              >
+                <div class="flex gap-4">
+                  <div class="flex items-center">
+                    <input
+                      id="pending"
+                      class="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                      type="radio"
+                      value="pending"
+                      name="status"
+                    />
+                    <label
+                      for="pending"
+                      class="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600"
+                      >Pending
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        class="h-4 w-4"
+                        ><path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                    </label>
+                  </div><div class="flex items-center">
+                    <input
+                      id="paid"
+                      class="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                      type="radio"
+                      value="paid"
+                      name="status"
+                    />
+                    <label
+                      for="paid"
+                      class="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 text-xs font-medium text-white"
+                      >Paid <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        class="h-4 w-4"
+                        ><path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5"></path></svg
+                      ></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="mt-6 flex justify-end gap-4">
+            <a
+              class="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+              href="/invoices">Cancel</a
+            >
+            <button
+              type="submit"
+              class="flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+             >Create Invoice
+
+              </button>
+          </div>
+        </form>
+      </main>
+    </div>
+   
+<script>
+  // Define types for your data
+interface Invoice {
+  customerId: string;
+  amount: number;
+  status: 'pending' | 'paid';
+}
+
+// Function to handle form submission
+const handleSubmit = (event: Event) => {
+  event.preventDefault();
+  
+  // Retrieve form data
+  const form = event.target as HTMLFormElement;
+  const formData = new FormData(form);
+  
+  // Construct invoice object
+  const invoice: Invoice = {
+    customerId: formData.get('customerId') as string,
+    amount: parseFloat(formData.get('amount') as string),
+    status: formData.get('status') as 'pending' | 'paid',
+  };
+
+  // Display invoice data (you can customize this part according to your requirements)
+  console.log('New Invoice:', invoice);
+};
+
+// Attach form submit event listener
+const form = document.querySelector('form');
+if (form) {
+  form.addEventListener('submit', handleSubmit);
+}
+
+</script>
+
+  </body>
+</html>

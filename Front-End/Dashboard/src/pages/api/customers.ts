@@ -1,9 +1,5 @@
 import type { APIRoute } from "astro";
-import { createPool } from "@vercel/postgres";
-
-const pool = createPool({
-  connectionString: import.meta.env.POSTGRES_URL,
-});
+import { pool } from "../../lib/db";
 
 type CustomerField = {
   id: string;

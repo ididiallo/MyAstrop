@@ -1,15 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { createPool } from "@vercel/postgres";
+import { pool } from "../lib/db";
 
 type CustomerField = {
   id: string;
   name: string;
 };
-
-const pool = createPool({
-  connectionString: import.meta.env.POSTGRES_URL,
-});
 
 const data =
   await pool.sql<CustomerField>`SELECT id, name FROM customers ORDER BY name ASC`;

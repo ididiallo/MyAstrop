@@ -1,0 +1,118 @@
+'use server';
+
+import { z } from 'astro:content';
+import { sql } from '@vercel/postgres';
+import { revalidatePath } from '@/node_modules/next/cache';
+import { redirect } from '@/node_modules/next/navigation';
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+ 
+// ...
+ 
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
+  }
+}
+
+const FormSchema = z.object({
+  id: z.string(),
+  customerId: z.string(),
+  amount: z.coerce.number(),
+  status: z.enum(['pending', 'paid']),
+  date: z.string(),
+});
+ 
+const CreateInvoice = FormSchema.omit({ id: true, date: true });
+ 
+ export async function createInvoice(formData: FormData) {
+  const { customerId, amount, status } = CreateInvoice.parse({
+        customerId:formData.get('customerId'),
+        amount: formData.get('amount'),
+        status: formData.get('status'),
+      });
+// convert the amount in cent 
+      const amountInCent = amount * 100;
+      const date = new Date().toISOString().split('T')[0];
+// add a try catch to handle error 
+try{
+  //create a new sql querry to insert the new invoice into the database and pass a new variable 
+  await sql `
+  INSERT INTO invoices (customer_Id, amount, status, date)
+  VALUES (${customerId}, ${amountInCent}, ${status}, ${date})
+  `;
+} catch (error){
+  return {
+    message: 'Database error: Fail to create invoice. ',
+  }
+}
+      
+//clear cache and revalidating a new request
+      revalidatePath("/dashboard/invoices");
+      //redirect the user back to invoice page 
+      redirect('/dashboard/invoices')
+}
+
+
+// Use Zod to update the expected types
+const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+ 
+// ...
+ //Extracting the data from formData.
+export async function updateInvoice(id: string, formData: FormData) {
+  
+  //Validating the types with Zod.
+      const { customerId, amount, status } = UpdateInvoice.parse({
+    customerId: formData.get('customerId'),
+    amount: formData.get('amount'),
+    status: formData.get('status'),
+  });
+ //converting the amount to cents
+  const amountInCents = amount * 100;
+  try{
+//Passing the variables to your SQL query.
+await sql`
+UPDATE invoices
+SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
+WHERE id = ${id}
+`;
+  } catch (error) {
+    return {
+      message: 'Database error: Failed to update invoice. ',
+    }
+  }
+ 
+  //Calling revalidatePath to clear the client cache and make a new server request.
+
+  revalidatePath('/dashboard/invoices');
+
+  //  Calling redirect to redirect the user to the invoice's page.
+  redirect('/dashboard/invoices');
+}
+
+
+
+export async function deleteInvoice(id: string) {
+
+  try {
+    await sql`DELETE FROM invoices WHERE id = ${id}`;
+    revalidatePath('/dashboard/invoices');
+    return { message: 'Deleted Invoice.' };
+  } catch (error) {
+    throw new Error('Failed to Delete Invoice');
+    return { message: 'Database Error: Failed to Delete Invoice.' };
+  }
+}

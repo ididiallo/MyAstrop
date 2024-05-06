@@ -1,6 +1,6 @@
 'use server';
 
-import { z } from 'astro:content';
+import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from '@/node_modules/next/cache';
 import { redirect } from '@/node_modules/next/navigation';

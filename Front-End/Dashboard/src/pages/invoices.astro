@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import Search from "../components/search.astro";
 import Skeletons from "../components/skeletons.astro";
-import Card from "../components/card.astro"
+import Card from "../components/card.astro";
+import { fetchFilteredInvoices } from "../lib/data";
+import { reference } from "astro:content";
 
 const title = "invoice";
+const response = await fetchFilteredInvoices('', 1)
+console.log(response)
 ---
 
 <!doctype html>

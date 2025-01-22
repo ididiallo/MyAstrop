@@ -1,5 +1,7 @@
+
 import { sql } from '@vercel/postgres';
 import { client } from "./database";
+
 import {
   CustomerField,
   CustomersTableType,
@@ -15,7 +17,7 @@ import { formatCurrency } from './utils';
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
-
+ 
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
@@ -37,12 +39,21 @@ export async function fetchRevenue() {
 export async function fetchLatestInvoices() {
  
   try {
-    const data = await sql<LatestInvoiceRaw>`
+    //original
+    // const data = await sql<LatestInvoiceRaw>`
+    //   SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
+    //   FROM invoices
+    //   JOIN customers ON invoices.customer_id = customers.id
+    //   ORDER BY invoices.date DESC
+    //   LIMIT 6`;
+//Modify
+    const data = await client.query<LatestInvoiceRaw>(`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
       ORDER BY invoices.date DESC
-      LIMIT 6`;
+      LIMIT 6`
+      );
 
     const latestInvoices = data.rows.map((invoice) => ({
       ...invoice,

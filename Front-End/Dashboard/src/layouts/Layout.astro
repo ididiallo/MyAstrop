@@ -1,8 +1,11 @@
 ---
+import React from 'react';
 import SideNave from '../components/sideNave.astro';
+import Home from '../pages/home.astro';
 
 
 const { title } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -14,20 +17,27 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
+		  
+		  
 	</head>
 	<body>
 
 		<div class="flex h-screen flex-col md:flex-row md:overflow-hidden">
 		  <div class="w-full flex-none md:w-64">
 			<SideNave />
-		  </div>
+		  <!-- </div>
 		  <div class="flex-grow p-6 md:overflow-y-auto md:p-12">
-			<slot />
-		</div>
+			
+		</div> -->
 		</div>
 	  
 	</body>
 </html>
+
 
 
 

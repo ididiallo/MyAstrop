@@ -1,5 +1,6 @@
 ---
 // Sidebar.astro
+import Home from "../pages/home.astro";
 ---
 
 <html lang="en">
@@ -48,7 +49,7 @@
           >
             <a
               class="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 bg-sky-100 text-blue-600"
-              href="/"
+              href="/home"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -127,44 +128,6 @@
           </div>
         </div>
       </div>
-  <!--  <div
-      class="bg-blue-500 h-full w-1/8 flex h-full flex-col px-3 py-4 md:px-2"
-    >
-      <nav class="h-100 bg-blue w-30">
-        <ul class="flex flex-col mt-8 space-y-4">
-          <li>
-            <a
-              href="/"
-              class="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="/invoices"
-              class="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
-              >Invoices</a
-            >
-          </li>
-          <li>
-            <a
-              href="/customers"
-              class="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
-              >Customers</a
-            >
-          </li>
-        </br>
-        </ul>
-        <div class="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
-        <form>
-          <button
-            class="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 "
-          >
-            <div class="hidden md:block">Sign Out</div>
-          </button>
-        </form>
-      </nav>
-    </div>
-  -->
+ 
   </body>
 </html>

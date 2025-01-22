@@ -72,21 +72,23 @@ interface LatestInvoicesProps {
 }
 
 export default function LatestInvoices({ latestInvoices }: LatestInvoicesProps) {
+
   // Check if the data is not an array or is empty
-  if (!Array.isArray(latestInvoices) || latestInvoices.length === 0) {
-    return (
-      <div className="flex w-full flex-col md:col-span-4">
-        <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-          Latest Invoices
-        </h2>
-        <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-          <p>No invoices found.</p>
-        </div>
-      </div>
-    );
-  }
+  // if (!Array.isArray(latestInvoices) || latestInvoices.length === 0) {
+  //   return (
+  //     <div className="flex w-full flex-col md:col-span-4">
+  //       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+  //         Latest Invoices
+  //       </h2>
+  //       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+  //         <p>No invoices found.</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
+
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Latest Invoices
@@ -94,6 +96,7 @@ export default function LatestInvoices({ latestInvoices }: LatestInvoicesProps) 
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
           {latestInvoices.map((invoice, i) => {
+            console.log(invoice)
             return (
               <div
                 key={invoice.id}
@@ -105,7 +108,7 @@ export default function LatestInvoices({ latestInvoices }: LatestInvoicesProps) 
                 )}
               >
                 <div className="flex items-center">
-                  <Image
+                  <img
                     src={invoice.image_url}
                     alt={`${invoice.name}'s profile picture`}
                     className="mr-4 rounded-full"

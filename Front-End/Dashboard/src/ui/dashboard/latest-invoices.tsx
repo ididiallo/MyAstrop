@@ -1,10 +1,8 @@
 import React from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Image from "react-image";
 import { lusitana } from "../fonts";
-import { fetchLatestInvoices } from "../../lib/data";
-import { LatestInvoice } from "../../lib/definitions";
+
 
 
 // export default async function LatestInvoices(){

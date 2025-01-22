@@ -1,39 +1,18 @@
---- 
+---
 import Layout from "../layouts/Layout.astro";
-import Dashboard from '../components/Dashboard.jsx';
-import Home from "./home.astro";
+import Dashboard from "../components/Dashboard";
 
-// Fetch data server-side
-import { fetchRevenue, fetchLatestInvoices, fetchCardData } from '../lib/data';
+import { fetchRevenue, fetchLatestInvoices, fetchCardData } from "../lib/data";
 
 const revenue = await fetchRevenue();
-console.log(revenue)
 const latestInvoices = await fetchLatestInvoices();
 const cardData = await fetchCardData();
 ---
 
-<html>
-  <head>
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <main className="grid">
-      {/* Sidebar Layout */}
-      <div className="grid grid-cols-12 gap-6">
-        {/* Left Side - 4 Columns */}
-        <div className="col-span-12 lg:col-span-4 bg-gray-100 p-4 rounded-lg">
-          {/* Content for the 4-column side */}
-          <Layout />
-        </div>
-      
-        {/* Right Side - 8 Columns */}
-        <div className="col-span-12 lg:col-span-8 bg-gray-50 p-4 rounded-lg color-red">
-          {/* Content for the 8-column side */}
-          <Home/>
-        </div>
-      </div>
-      
-    </main>
-  </body>
-</html>
-
+<Layout>
+  <Dashboard
+    revenue={revenue}
+    latestInvoices={latestInvoices}
+    cardData={cardData}
+  />
+</Layout>

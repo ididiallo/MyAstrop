@@ -17,8 +17,8 @@ import {fetchRevenue } from '../../lib/data'
 
 
 
-export default  async function RevenueChart() {
-const revenue = fetchRevenue();
+export default   function RevenueChart({revenue}) {
+console.log("revenue", revenue)
 
   const chartHeight = 350;
   const { yAxisLabels, topLabel } = generateYAxis(revenue);

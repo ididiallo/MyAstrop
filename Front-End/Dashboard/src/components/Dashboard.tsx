@@ -7,10 +7,9 @@ import { fetchRevenue } from "../lib/data";
 import { fetchLatestInvoices } from "../lib/data";
 import { fetchCardData } from "../lib/data";
 
-const Dashboard = ({ cardData }) => {
-  const revenue = fetchRevenue();
+const Dashboard = ({ cardData, revenue }) => {
   const latestInvoices = fetchLatestInvoices();
-
+  console.log("dashboard", revenue)
   return (
     <div class="flex-grow p-6 md:overflow-y-auto md:p-12">
       <main>

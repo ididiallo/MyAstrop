@@ -1,43 +1,33 @@
 ---
-import React from 'react';
-import SideNave from '../components/sideNave.astro';
-import Home from '../pages/home.astro';
-
+import SideNave from "../components/sideNave.astro";
 
 const { title } = Astro.props;
-
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		
-			<link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
-		  
-		  
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
 
-		<div class="flex h-screen flex-col md:flex-row md:overflow-hidden">
-		  <div class="w-full flex-none md:w-64">
-			<SideNave />
-		  <!-- </div>
-		  <div class="flex-grow p-6 md:overflow-y-auto md:p-12">
-			
-		</div> -->
-		</div>
-	  
-	</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lusitana:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="min-h-screen flex flex-col md:flex-row">
+    <SideNave />
+    <slot />
+  </body>
 </html>
-
-
-
-

@@ -1,17 +1,10 @@
-// src/components/Dashboard.jsx
-import React, { useState, useEffect } from "react";
 import { Card } from "../ui/dashboard/cards";
 import RevenueChart from "../ui/dashboard/revenue-chart";
 import LatestInvoices from "../ui/dashboard/latest-invoices";
-import { fetchRevenue } from "../lib/data";
-import { fetchLatestInvoices } from "../lib/data";
-import { fetchCardData } from "../lib/data";
 
-const Dashboard = ({ cardData, revenue,latestInvoices }) => {
-  
-  console.log("dashboard", latestInvoices)
+const Dashboard = ({ cardData, revenue, latestInvoices }) => {
   return (
-    <div class="flex-grow p-6 md:overflow-y-auto md:p-12">
+    <div className="flex-1 px-3 py-4 md:px-2">
       <main>
         {/* <h1 class="__className_712214 mb-4 text-xl md:text-2xl">
         Dashboard

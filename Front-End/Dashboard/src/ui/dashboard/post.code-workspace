@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../../../../../../Playwright_Automation"
+		},
+		{
+			"path": "../../../../../../Townsquare_playwright"
 		}
 	],
 	"settings": {}

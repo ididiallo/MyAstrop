@@ -2,30 +2,23 @@
 import React from 'react';
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { useNavigate, useLocation,  BrowserRouter   } from 'react-router-dom'; // If using React Router
-
-//import { useSearchParams, usePathname, useRouter } from '@/node_modules/next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 
 
 export default function Search({ placeholder }: { placeholder: string }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const {replace} = BrowserRouter();
-
-  //creating a handle search fonction 
-  const handleSearch = useDebouncedCallback((term) => {
-  console.log(`searching... ${term}`)
-  const params = new URLSearchParams(searchParams);
-  params.set('page', '1');
- //set the params string based on the user’s input. If the input is empty, you want to delete it
-  if(term){
-    params.set('query', term);
-  } else{
-    params.delete('query');
-  }
-replace(`${pathname}?${params.toString()}`);
-}, 300);
+  // Debounced URL updater
+  const handleSearch = useDebouncedCallback((term: string) => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', '1');
+    if (term) {
+      params.set('query', term);
+    } else {
+      params.delete('query');
+    }
+    const nextUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState(null, '', nextUrl);
+  }, 300);
  
  
   return (
@@ -40,7 +33,7 @@ replace(`${pathname}?${params.toString()}`);
        onChange={(e)=>{
        handleSearch(e.target.value);
     }}
-    defaultValue={searchParams.get('query')?.toString()}
+    defaultValue={typeof window !== 'undefined' ? (new URLSearchParams(window.location.search).get('query') ?? '') : ''}
       /> 
       <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
     </div>

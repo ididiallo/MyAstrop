@@ -5,8 +5,7 @@ import {
   HomeIcon,
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
-import Link from '@/node_modules/next/link';
-import { usePathname } from 'next/navigation';
+// Removed Next.js-specific imports; this project doesn't use Next Router here
 import clsx from 'clsx';
 import React from 'react';
 
@@ -23,7 +22,7 @@ const links = [
 ];
 
 export default function NavLinks() {
-  const pathname = usePathname();
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
 
   return (
     <>
